@@ -3,13 +3,15 @@ const env = require("./env/.env");
 const {Telegraf, Markup, session, Extra, Scenes} = require("telegraf");
 const bot = new Telegraf(env.token);
 var a_str;
+
 //Verify userID to use some private parts
- 
 const verUser = (ctx, next) =>
 {
   const IDmsg = ctx.update.message
         && ctx.update.message.from.id == env.userID;
+
   const IDcallback = ctx.update.callback_query && ctx.update.callback_query.from.id == env.userID;
+
   if(IDmsg || IDcallback)
   {
     next()
